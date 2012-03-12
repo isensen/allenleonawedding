@@ -5,7 +5,19 @@
     <link href="css/invite.css?t=20120312" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="javascript/jquery-1.6.2.js"></script>
+    <script type="text/javascript" src="javascript/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="javascript/customer.js?t=20120312"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-29911815-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 </head>
 <body>
     <div class="invite">
@@ -14,11 +26,26 @@
         <div class="third"><img src="images/location.png"></div>
         <div class="fourth"><img src="images/thankyou.png"></div>
     </div>
+    <div id="background_player" ></div>
 <script>
     $(document).ready(function(){
         $("#customer").attr("src",getCustomer());
         $("#customer").error(function(){
             this.src="images/custom/nin.png";
+        });
+
+        $("#background_player").jPlayer({
+            ready: function () {
+                $(this).jPlayer("setMedia", {
+                    mp3: "http://view.online.zcom.com/full/20669/%D2%B9%B5%C4%B8%D6%C7%D9%C7%FA.mp3"
+                }).jPlayer("play");
+            },
+            ended: function (event) {
+                $(this).jPlayer("play");
+            },
+            swfPath: "javascript",
+            supplied: "mp3",
+            loop:true
         });
     });
 </script>
