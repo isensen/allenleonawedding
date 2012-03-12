@@ -1,0 +1,24 @@
+/** invite **/
+body {
+    font-family: 'PT Sans', sans-serif;
+
+    /*min-height: 740px;*/
+
+    background: #A0002B;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#A0002B), to(#9A0028));
+    background: -webkit-radial-gradient(#A0002B, #9A0028);
+    background:    -moz-radial-gradient(#A0002B, #9A0028);
+    background:      -o-radial-gradient(#A0002B, #9A0028);
+    background:         radial-gradient(#A0002B, #9A0028);
+}
+.invite{
+    margin-top: -150px;
+    width: 100%;
+}
+.invite div{
+    margin: 300px;
+    /*width: 100%;*/
+}
+.invite .fourth{
+    padding-left: 100px;
+}

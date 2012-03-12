@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Allen & Leona's Wedding invitation</title>
+    <link href="css/invite.css?t=20120312" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="javascript/jquery-1.6.2.js"></script>
+    <script type="text/javascript" src="javascript/customer.js?t=20120312"></script>
+</head>
+<body>
+    <div class="invite">
+        <div class="first"><img id="customer" src="images/custom/nin.png"/></div>
+        <div class="second"><img src="images/time.png"></div>
+        <div class="third"><img src="images/location.png"></div>
+        <div class="fourth"><img src="images/thankyou.png"></div>
+    </div>
+<script>
+    $(document).ready(function(){
+        $("#customer").attr("src",getCustomer());
+        $("#customer").error(function(){
+            this.src="images/custom/nin.png";
+        });
+    });
+</script>
+</body>
+</html>

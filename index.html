@@ -12,11 +12,16 @@
 
     <script type="text/javascript" src="javascript/jquery-1.6.2.js"></script>
     <script type="text/javascript" src="javascript/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="javascript/customer.js?t=20120311"></script>
+    <script type="text/javascript" src="javascript/customer.js?t=20120312"></script>
 
 </head>
 <body>
 <div id="impress" class="impress-not-supported">
+
+    <div class="fallback-message">
+        <p>建议您使用firefox、chrome或者safari访问本网站以获得最好的效果</p>
+        <p>本网页将在<b>5</b>秒钟以后跳转到适合ie浏览器访问的页面，<a href="invite.html">点此直接跳转</a></p>
+    </div>
 
     <div id="bored" class="step" data-x="-200" data-y="-4800">
         <img src="images/wedding_2.png" />
@@ -32,14 +37,6 @@
         <div class="largepic middle"><img src="images/wedding_07.png"/></div>
         <div class="largepic"><img src="images/wedding_10.png"/></div>
     </div>
-
-    <!--<div class="step" data-x="2000" data-y="-4700">-->
-    <!--<img src="images/wedding_07.png"/>-->
-    <!--</div>-->
-
-    <!--<div class="step" data-x="2000" data-y="-4600">-->
-    <!--<img src="images/wedding_10.png"/>-->
-    <!--</div>-->
 
     <div class="step" data-x="1000" data-y="-4300" data-rotate="90">
         <img src="images/allensay.png"/>
@@ -61,7 +58,7 @@
     </div>
 
     <div class="step" data-x="-1000" data-y="-4800" >
-        <img id="customer" />
+        <img id="customer" src="images/custom/nin.png"/>
     </div>
 
     <div class="step" data-x="-1000" data-y="-4300" >
@@ -87,12 +84,22 @@
 <script>
 
     $(document).ready(function(){
+        if($.browser.msie){
+            window.setTimeout(function(){
+                window.location.href="invite.html";
+            },5000);
+            return;
+        }
+
         var timeInterval = 6000;
         var timeId = window.setInterval(function(){
             impress().next();
         },timeInterval);
 
         $("#customer").attr("src",getCustomer());
+        $("#customer").error(function(){
+            this.src="images/custom/nin.png";
+        });
 
         $("#background_player").jPlayer({
             ready: function () {
