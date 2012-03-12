@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Allen & Leona's Wedding invitation</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" lang="en" content="" />
+    <meta name="robots" content="index, follow" />
+    <!--link rel="shortcut icon" href="favicon.ico" /-->
+    <link href="css/style.css?t=20120311" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="javascript/jquery-1.6.2.js"></script>
+    <script type="text/javascript" src="javascript/jquery.jplayer.min.js"></script>
+    <script type="text/javascript" src="javascript/customer.js?t=20120311"></script>
+
+</head>
+<body>
+<div id="impress" class="impress-not-supported">
+
+    <div id="bored" class="step" data-x="-200" data-y="-4800">
+        <img src="images/wedding_2.png" />
+    </div>
+
+    <div class="step" data-x="500" data-y="-4800">
+        <img src="images/wedding_13.png"/>
+        <img class="bottom" src="images/wedding_15.png"/>
+    </div>
+
+    <div class="step" data-x="1000" data-y="-4800">
+        <div class="largepic"><img src="images/wedding_03.png"/></div>
+        <div class="largepic middle"><img src="images/wedding_07.png"/></div>
+        <div class="largepic"><img src="images/wedding_10.png"/></div>
+    </div>
+
+    <!--<div class="step" data-x="2000" data-y="-4700">-->
+    <!--<img src="images/wedding_07.png"/>-->
+    <!--</div>-->
+
+    <!--<div class="step" data-x="2000" data-y="-4600">-->
+    <!--<img src="images/wedding_10.png"/>-->
+    <!--</div>-->
+
+    <div class="step" data-x="1000" data-y="-4300" data-rotate="90">
+        <img src="images/allensay.png"/>
+    </div>
+
+    <div class="step" data-x="500" data-y="-4300" data-rotate="180">
+        <img src="images/leonasay.png"/>
+    </div>
+
+    <div class="step" data-x="200" data-y="-3500" data-scale="2">
+        <img src="images/wedding_3.png"/>
+    </div>
+
+    <div class="step yes" data-x="-500" data-y="-4650" data-z="-3000" data-scale="2" data-rotate="45" >
+        <div><img src="images/wedding_18.png"/></div>
+        <div><img src="images/wedding_21.png"/></div>
+        <div class="lineLeft"><img src="images/wedding_23.png"/></div>
+        <div class="lineRight"><img src="images/wedding_27.png"/></div>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-4800" >
+        <img id="customer" />
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-4300" >
+        <img src="images/time.png"/>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-3800" >
+        <img src="images/location.png"/>
+    </div>
+
+    <div class="step" data-x="-1000" data-y="-3300" >
+        <img src="images/thankyou.png"/>
+    </div>
+
+    <div id="overview" class="step" data-x="10" data-y="-4000" data-scale="3">
+    </div>
+
+</div>
+<div id="background_player"></div>
+
+<script src="javascript/impress.js"></script>
+<script>impress();</script>
+<script>
+
+    $(document).ready(function(){
+        var timeInterval = 6000;
+        var timeId = window.setInterval(function(){
+            impress().next();
+        },timeInterval);
+
+        $("#customer").attr("src",getCustomer());
+
+        $("#background_player").jPlayer({
+            ready: function () {
+                $(this).jPlayer("setMedia", {
+                    mp3: "media/background.mp3"
+                }).jPlayer("play");
+            },
+            ended: function (event) {
+                $(this).jPlayer("play");
+            },
+            swfPath: "javascript",
+            supplied: "mp3",
+            loop:true
+        });
+
+        $(document).bind("keydown.backspace",function(){
+            if(timeId){
+                timeId =window.clearInterval(timeId);
+            }else{
+                timeId = window.setInterval(function(){
+                    impress().next();
+                },timeInterval);
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
+
