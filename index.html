@@ -98,7 +98,12 @@
     $(document).ready(function(){
         if($.browser.msie){
             window.setTimeout(function(){
-                window.location.href="invite.html";
+                var name = getQueryParameter("u");
+                var url = "invite.html";
+                if(name){
+                    url += "?u="+name;
+                }
+                window.location.href=url;
             },5000);
             return;
         }
